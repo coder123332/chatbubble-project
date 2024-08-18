@@ -46,32 +46,45 @@ const ComicBubbles = () => {
   };
 
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      setText((prevText) => prevText + "\n"); // Add a newline character to the text
+    }
+  };
+
+
 
   const applyBoxShadow = (color) => {
     const element = document.querySelector('.cbbl');
-    element.style.boxShadow = 
+    element.style.boxShadow =
       `0 -3px ${color}, 0 -6px #000, 3px 0 ${color}, 3px -3px #000, 6px 0 #000, 0 3px ${color}, 0 6px #000, -3px 0 ${color}, -3px 3px #000, -6px 0 #000, -3px -3px #000, 3px 3px #000, 3px 9px rgba(0, 0, 0, 0.4), 6px 6px rgba(0, 0, 0, 0.4), 9px 3px rgba(0, 0, 0, 0.4)`
-    
-      const style = document.createElement('style');
-      style.type = 'text/css';
-    
-      const beforeRule = `.cbbl::before { content: ''; background-color: ${color}; }`;
-      const afterRule = `.cbbl::after { content: ''; background-color: ${color};box-shadow: -3px 0 #000, 3px 0 #000, 3px 3px ${color}, 0px 3px #000, 6px 3px rgba(0, 0, 0, 0.4), 9px 3px rgba(0, 0, 0, 0.4), 3px 6px #000, 6px 6px #000, 9px 6px rgba(0, 0, 0, 0.4), 6px 9px rgba(0, 0, 0, 0.4); }`;
-      const rightRule = `.cbbl.-up.-right::after { content: '';box-shadow: 3px 0 #000, -3px 0 #000, -3px -3px ${color}, 0px -3px #000,-6px -3px  rgba(0, 0, 0, 0.4), -3px -6px  rgba(0, 0, 0, 0.4), -6px -6px rgba(0, 0, 0, 0.4) }`;
-      const rightAfterRule = `.cbbl.-right::after { content: '';box-shadow: 3px 0 #000, -3px 0 #000, -3px 3px ${color}, 0px 3px #000,-6px 3px #000, -3px 6px  rgba(0, 0, 0, 0.4), -6px 6px  rgba(0, 0, 0, 0.4), -3px 9px  rgba(0, 0, 0, 0.4), 0 6px  rgba(0, 0, 0, 0.4),3px 3px  rgba(0, 0, 0, 0.4), 6px 0px rgba(0, 0, 0, 0.4); }`;
-      const rightUpAfterRule = `.cbbl.-up::after { content: '';box-shadow: -3px 0 #000, 3px 0 #000, 3px -3px ${color}, 0px -3px #000,6px -3px #000, 3px -6px  rgba(0, 0, 0, 0.4), 6px -6px  rgba(0, 0, 0, 0.4); }`;
-    
-      style.innerHTML = `${beforeRule} ${afterRule} ${rightRule} ${rightAfterRule} ${rightUpAfterRule}`;
-      document.head.appendChild(style);
 
-    };
+    const style = document.createElement('style');
+    style.type = 'text/css';
+
+    const beforeRule = `.cbbl::before { content: ''; background-color: ${color}; }`;
+    const afterRule = `.cbbl::after { content: ''; background-color: ${color};box-shadow: -3px 0 #000, 3px 0 #000, 3px 3px ${color}, 0px 3px #000, 6px 3px rgba(0, 0, 0, 0.4), 9px 3px rgba(0, 0, 0, 0.4), 3px 6px #000, 6px 6px #000, 9px 6px rgba(0, 0, 0, 0.4), 6px 9px rgba(0, 0, 0, 0.4); }`;
+    const rightRule = `.cbbl.-up.-right::after { content: '';box-shadow: 3px 0 #000, -3px 0 #000, -3px -3px ${color}, 0px -3px #000,-6px -3px  rgba(0, 0, 0, 0.4), -3px -6px  rgba(0, 0, 0, 0.4), -6px -6px rgba(0, 0, 0, 0.4) }`;
+    const rightAfterRule = `.cbbl.-right::after { content: '';box-shadow: 3px 0 #000, -3px 0 #000, -3px 3px ${color}, 0px 3px #000,-6px 3px #000, -3px 6px  rgba(0, 0, 0, 0.4), -6px 6px  rgba(0, 0, 0, 0.4), -3px 9px  rgba(0, 0, 0, 0.4), 0 6px  rgba(0, 0, 0, 0.4),3px 3px  rgba(0, 0, 0, 0.4), 6px 0px rgba(0, 0, 0, 0.4); }`;
+    const rightUpAfterRule = `.cbbl.-up::after { content: '';box-shadow: -3px 0 #000, 3px 0 #000, 3px -3px ${color}, 0px -3px #000,6px -3px #000, 3px -6px  rgba(0, 0, 0, 0.4), 6px -6px  rgba(0, 0, 0, 0.4); }`;
+
+    style.innerHTML = `${beforeRule} ${afterRule} ${rightRule} ${rightAfterRule} ${rightUpAfterRule}`;
+    document.head.appendChild(style);
+
+  };
 
   return (
     <div>
       <div className="main--container">
-        <img style={{height:'auto',width:'100%'}} src="https://s.pixelspeechbubble.com/logo.png" />
+        <img style={{ height: 'auto', width: '70%' }} src="https://s.pixelspeechbubble.com/logo.png" />
         <h4 className="text--white">Write some text and click Create to make your own pixel speech bubble.</h4>
-        <textarea className="input--box" placeholder="Type here.." onChange={(e) => setText(e.target.value)} />
+        <textarea
+          // onKeyDown={handleKeyDown}
+          className="input--box"
+          placeholder="Type here.."
+          onChange={(e) => setText(e.target.value)}
+        />
 
 
         <div className="m-4">
@@ -114,10 +127,12 @@ const ComicBubbles = () => {
           <div className={`inner`}>
             <div
               style={{
-                backgroundColor: bgColor, color: textColor,          
+                backgroundColor: bgColor, color: textColor,
               }}
               className={`cbbl ${position == 'top-right' ? '-right -up' : position == 'top-left' ? '-up ' : position == 'bottom-right' ? '' : position == 'bottom-left' ? '-right' : ''}`}>
-              {text}
+              {text.split('\n').map((line, index) => (
+                <div key={index}>{line}</div>
+              ))}
             </div>
           </div>
 

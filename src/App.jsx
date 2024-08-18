@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./App.css";
 import { toPng, toSvg } from 'html-to-image';
-import BoxLogoGenerator from '../Box Logo generator/BoxLogoGenerator';
 
 
 

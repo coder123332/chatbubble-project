@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./App.css";
 import { toPng, toSvg } from 'html-to-image';
-import BoxLogoGenerator from './Box Logo Generator/BoxLogoGenerator';
+import BoxLogoGenerator from './Box Logo generator/BoxLogoGenerator';
 
 
 const ComicBubbles = () => {

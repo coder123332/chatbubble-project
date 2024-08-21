@@ -1,25 +1,22 @@
+/* General Styling */
 body {
     font-family: Verdana, sans-serif;
     background-color: #ff8fb2;
-  }
-
-.main--container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-
-.color-con{
-  display: flex;
+.main--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+.color-con {
+    display: flex;
+}
 
-
-
-
-  button {
+/* Button Styling */
+button {
     border: none;
     min-height: 30px;
     font-weight: 700;
@@ -32,31 +29,28 @@ body {
     padding: 10px;
     border-radius: 6px;
     cursor: pointer;
-  }
+}
 
-
-  a {
+/* Link Styling */
+a {
     text-decoration: underline;
     color: #404040;
-  }
+}
 
-  .container {
-    /* max-width: 00px; */
+/* Container Styling */
+.container {
     margin: 0px auto;
     background: #fff;
     padding: 50px;
     border: 3px solid #000;
     box-shadow: 6px 6px 0 #aaa;
     margin-left: 400px;
-  }
-  .cbbl {
+}
+
+/* Chat Bubble Styling */
+.cbbl {
     font-size: 20px;
     font-family: "Iceland", cursive;
-  }
-  .cbbl input {
-    font-family: "Iceland", cursive;
-  }
-  .cbbl {
     position: relative;
     display: inline-block;
     margin: 10px 9px 29px 6px;
@@ -66,158 +60,152 @@ body {
     color: #000;
     padding: 5px;
     box-shadow: 0 -3px #fff, 0 -6px #000, 3px 0 #fff, 3px -3px #000, 6px 0 #000,
-      0 3px #fff, 0 6px #000, -3px 0 #fff, -3px 3px #000, -6px 0 #000,
-      -3px -3px #000, 3px 3px #000, 3px 9px rgba(0, 0, 0, 0.4), 6px 6px rgba(0, 0, 0, 0.4), 9px 3px rgba(0, 0, 0, 0.4);
+        0 3px #fff, 0 6px #000, -3px 0 #fff, -3px 3px #000, -6px 0 #000,
+        -3px -3px #000, 3px 3px #000, 3px 9px rgba(0, 0, 0, 0.4), 6px 6px rgba(0, 0, 0, 0.4), 9px 3px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
     box-sizing: border-box;
-  }
-  .cbbl::before,
-  .cbbl::after {
+}
+
+/* Arrow Styling for Chat Bubble */
+.cbbl::before,
+.cbbl::after {
     content: "";
     display: block;
     position: absolute;
     transition: all 0.3s ease;
     box-sizing: border-box;
-    left: 70%;
-  }
-  .cbbl::after {
+    left: 70%; /* Adjust this to align the arrow as needed */
+}
+
+.cbbl::after {
     background: #fff;
     width: 9px;
     height: 3px;
     bottom: -14px;
     margin-left: 6px;
     box-shadow: -3px 0 #000, 3px 0 #000, 3px 3px #fff, 0px 3px #000, 6px 3px rgba(0, 0, 0, 0.4),
-      9px 3px rgba(0, 0, 0, 0.4), 3px 6px #000, 6px 6px #000, 9px 6px rgba(0, 0, 0, 0.4), 6px 9px rgba(0, 0, 0, 0.4);
-  }
-  .cbbl::before {
+        9px 3px rgba(0, 0, 0, 0.4), 3px 6px #000, 6px 6px #000, 9px 6px rgba(0, 0, 0, 0.4), 6px 9px rgba(0, 0, 0, 0.4);
+}
+
+.cbbl::before {
     width: 15px;
     height: 8px;
     background: #fff;
     bottom: -11px;
     border-left: 3px solid #000;
     border-right: 3px solid #000;
-  }
-  .cbbl.-hover:hover {
+}
+
+/* Hover Effects */
+.cbbl.-hover:hover {
     background-color: #eee;
     color: #000;
     box-shadow: 0 -3px blue, 0 -6px #7bc8a4, 3px 0 #eee, 3px -3px #7bc8a4,
-      6px 0 #7bc8a4, 0 3px #eee, 0 6px blue, -3px 0 #eee, -3px 3px #7bc8a4,
-      -6px 0 #7bc8a4, -3px -3px #7bc8a4, 3px 3px #7bc8a4, 3px 9px #cae9db,
-      6px 6px #cae9db, 9px 3px #cae9db;
-  }
-  .cbbl.-hover:hover::before {
+        6px 0 #7bc8a4, 0 3px #eee, 0 6px blue, -3px 0 #eee, -3px 3px #7bc8a4,
+        -6px 0 #7bc8a4, -3px -3px #7bc8a4, 3px 3px #7bc8a4, 3px 9px #cae9db,
+        6px 6px #cae9db, 9px 3px #cae9db;
+}
+
+.cbbl.-hover:hover::before {
     background: #eee;
     border-left-color: #7bc8a4;
     border-right-color: #7bc8a4;
-  }
-  .cbbl.-hover:hover::after {
+}
+
+.cbbl.-hover:hover::after {
     box-shadow: -3px 0 #7bc8a4, 3px 0 #7bc8a4, 3px 3px #eee, 0px 3px #7bc8a4,
-      6px 3px #7bc8a4, 9px 3px #cae9db, 3px 6px #7bc8a4, 6px 6px #7bc8a4,
-      9px 6px #cae9db, 6px 9px #cae9db, 9px 9px #7bc8a4;
-  }
-  .cbbl.-hover:hover.-control input[type="submit"],
-  .cbbl.-hover:hover.-control button,
-  .cbbl.-hover:hover.-control a {
-    color: #000;
-  }
-  .cbbl.-up {
+        6px 3px #7bc8a4, 9px 3px #cae9db, 3px 6px #7bc8a4, 6px 6px #7bc8a4,
+        9px 6px #cae9db, 6px 9px #cae9db, 9px 9px #7bc8a4;
+}
+
+/* Top Arrow Position */
+.cbbl.-up {
     margin: 29px 9px 10px 6px;
-  }
-  .cbbl.-up::before {
+}
+
+.cbbl.-up::before {
     top: -11px;
     bottom: auto;
     left: 70%;
-  }
-  .cbbl.-up::after {
+}
+
+.cbbl.-up::after {
     top: -14px;
     bottom: auto;
     left: 70%;
     box-shadow: -3px 0 #000, 3px 0 #000, 3px -3px #fff, 0px -3px #000,
-      6px -3px #000, 3px -6px  rgba(0, 0, 0, 0.4), 6px -6px  rgba(0, 0, 0, 0.4);
-  }
-  .cbbl.-up.-hover:hover::after {
-    box-shadow: -3px 0 #7bc8a4, 3px 0 #7bc8a4, 3px -3px #eee, 0px -3px #7bc8a4,
-      6px -3px #7bc8a4, 3px -6px #7bc8a4, 6px -6px #7bc8a4;
-  }
-  .cbbl.-up.-right::after {
+        6px -3px #000, 3px -6px rgba(0, 0, 0, 0.4), 6px -6px rgba(0, 0, 0, 0.4);
+}
+
+.cbbl.-up.-right::after {
     box-shadow: 3px 0 #000, -3px 0 #000, -3px -3px #fff, 0px -3px #000,
-      -6px -3px  rgba(0, 0, 0, 0.4), -3px -6px  rgba(0, 0, 0, 0.4), -6px -6px rgba(0, 0, 0, 0.4);
-  }
-  .cbbl.-up.-right.-hover:hover::after {
-    box-shadow: 3px 0 #7bc8a4, -3px 0 #7bc8a4, -3px -3px #eee, 0px -3px #7bc8a4,
-      -6px -3px #7bc8a4, -3px -6px #7bc8a4, -6px -6px #7bc8a4;
-  }
-  .cbbl.-right::before,
-  .cbbl.-right::after {
+        -6px -3px rgba(0, 0, 0, 0.4), -3px -6px rgba(0, 0, 0, 0.4), -6px -6px rgba(0, 0, 0, 0.4);
+}
+
+/* Right Arrow Position */
+.cbbl.-right::before,
+.cbbl.-right::after {
     left: auto;
     right: 80%;
-  }
-  .cbbl.-right::after {
+}
+
+.cbbl.-right::after {
     margin-left: 0;
     margin-right: 6px;
     box-shadow: 3px 0 #000, -3px 0 #000, -3px 3px #fff, 0px 3px #000,
-      -6px 3px #000, -3px 6px  rgba(0, 0, 0, 0.4), -6px 6px  rgba(0, 0, 0, 0.4), -3px 9px  rgba(0, 0, 0, 0.4), 0 6px  rgba(0, 0, 0, 0.4),
-      3px 3px  rgba(0, 0, 0, 0.4), 6px 0px rgba(0, 0, 0, 0.4);
-  }
+        -6px 3px #000, -3px 6px rgba(0, 0, 0, 0.4), -6px 6px rgba(0, 0, 0, 0.4), -3px 9px rgba(0, 0, 0, 0.4), 0 6px rgba(0, 0, 0, 0.4),
+        3px 3px rgba(0, 0, 0, 0.4), 6px 0px rgba(0, 0, 0, 0.4);
+}
 
-
-
-  /* bottom right */
-
-
-  .cbbl.-right-bottom::before,
-  .cbbl.-right-bottom::after {
+/* Bottom Right Arrow Position */
+.cbbl.-right-bottom::before,
+.cbbl.-right-bottom::after {
     left: auto;
     right: 20%;
-  }
-  .cbbl.-right-bottom::after {
+}
+
+.cbbl.-right-bottom::after {
     margin-left: 0;
     margin-right: 6px;
     box-shadow: 3px 0 #000, -3px 0 #000, -3px 3px #fff, 0px 3px #000,
-      -6px 3px #000, -3px 6px #000, -6px 6px #000, -3px 9px #000, 0 6px #000,
-      3px 3px #000, 6px 0px #000;
-  }
+        -6px 3px #000, -3px 6px #000, -6px 6px #000, -3px 9px #000, 0 6px #000,
+        3px 3px #000, 6px 0px #000;
+}
 
-
-  /* end */
-
-  .cbbl.-right.-hover:hover::after {
-    box-shadow: 3px 0 #7bc8a4, -3px 0 #7bc8a4, -3px 3px #eee, 0px 3px #7bc8a4,
-      -6px 3px #7bc8a4, -3px 6px #7bc8a4, -6px 6px #7bc8a4, -3px 9px #cae9db,
-      0 6px #cae9db, 3px 3px #000, 6px 0px #cae9db;
-  }
-  .cbbl.-no-selection {
+/* Non-Selectable Text and Control Elements */
+.cbbl.-no-selection {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
-  .cbbl.-control {
+}
+
+.cbbl.-control {
     cursor: pointer;
-  }
-  .cbbl.-control input[type="submit"],
-  .cbbl.-control button,
-  .cbbl.-control a {
+}
+
+.cbbl.-control input[type="submit"],
+.cbbl.-control button,
+.cbbl.-control a {
     cursor: pointer;
     transition: color 0.3s ease;
-  }
-  .cbbl.-control:active {
+}
+
+.cbbl.-control:active {
     transform: scale(0.95);
-  }
-
-
-
-.m-4{
-  margin: 20px;
 }
 
-.input--box{
-  /* min-height: 250px;
-  min-width: 500px; */
+/* Margin and Input Box Styling */
+.m-4 {
+    margin: 20px;
 }
 
-/* updated by love*/
+.input--box {
+    /* min-height: 250px;
+    min-width: 500px; */
+}
 
+/* Checkbox Toggle Switch Styling */
 input[type="checkbox"] {
     position: relative;
     width: 40px;
@@ -248,6 +236,4 @@ input[type="checkbox"]:before {
 
 input[type="checkbox"]:checked:before {
     transform: translateX(20px);
-}
-
 }

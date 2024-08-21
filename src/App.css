@@ -216,28 +216,38 @@ body {
   min-width: 500px; */
 }
 
-/* for box logo*/
+/* updated by love*/
 
-
-
-.input-group {
-    margin-bottom: 10px;
-}
-
-.btn {
-    padding: 10px 20px;
-    background-color: black;
-    color: white;
-    border: none;
+input[type="checkbox"] {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    appearance: none;
+    background: #ddd;
+    border-radius: 10px;
+    outline: none;
     cursor: pointer;
-    margin: 5px;
+    transition: background 0.3s ease-in-out;
 }
 
-.btn:hover {
-    opacity: 0.8;
+input[type="checkbox"]:checked {
+    background: #4CAF50;
 }
 
-#image-container img {
-    margin-top: 20px;
-    border: 1px solid black;
+input[type="checkbox"]:before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background: #fff;
+    transition: transform 0.3s ease-in-out;
+}
+
+input[type="checkbox"]:checked:before {
+    transform: translateX(20px);
+}
+
 }

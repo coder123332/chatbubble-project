@@ -5,8 +5,8 @@ import { toPng, toSvg } from 'html-to-image';
 const ComicBubbles = () => {
 
   const [text, setText] = useState('Type anything here......');
-  const [topPosition, setTopPosition] = useState('top-left');
-  const [bottomPosition, setBottomPosition] = useState('bottom-left');
+  const [vertical, setVerticel] = useState('top');
+  const [position, setPosition] = useState('bottom');
   const [bgColor, setBgColor] = useState('white');
   const [textColor, setTextColor] = useState('black');
 
@@ -44,6 +44,13 @@ const ComicBubbles = () => {
       });
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      setText((prevText) => prevText + "\n"); // Add a newline character to the text
+    }
+  };
+
   const applyBoxShadow = (color) => {
     const element = document.querySelector('.cbbl');
     element.style.boxShadow =
@@ -68,6 +75,7 @@ const ComicBubbles = () => {
         <img style={{ height: 'auto', width: '70%' }} src="https://static-cdn.jtvnw.net/jtv_user_pictures/3e5142df-9d1c-41cb-a2b0-5742b7256be6-profile_image-300x300.png" />
         <h4 className="text--white">Write some text and click Create to make your own pixel speech bubble.</h4>
         <textarea
+          onKeyDown={handleKeyDown}
           className="input--box"
           placeholder="Type here.."
           onChange={(e) => setText(e.target.value)}
@@ -75,25 +83,22 @@ const ComicBubbles = () => {
 
         <div className="m-4">
           <label>
-            Spike Top:
-            <input
-              type="checkbox"
-              checked={topPosition === 'top-right'}
-              onChange={() => setTopPosition(topPosition === 'top-left' ? 'top-right' : 'top-left')}
-            />
-            {topPosition === 'top-left' ? 'Left' : 'Right'}
+            Spike Top left
+            <input checked={position === 'top-right'} type="radio" onChange={() => setPosition('top-right')} />
+          </label>
+          <label>
+            Spike Top right
+            <input checked={position === 'top-left'} type="radio" onChange={() => setPosition('top-left')} />
           </label>
         </div>
-
-        <div className="m-4">
+        <div>
           <label>
-            Spike Bottom:
-            <input
-              type="checkbox"
-              checked={bottomPosition === 'bottom-right'}
-              onChange={() => setBottomPosition(bottomPosition === 'bottom-left' ? 'bottom-right' : 'bottom-left')}
-            />
-            {bottomPosition === 'bottom-left' ? 'Left' : 'Right'}
+            Bottom left
+            <input checked={position === 'bottom-left'} type="radio" onChange={() => setPosition('bottom-left')} />
+          </label>
+          <label>
+            Bottom right
+            <input checked={position === 'bottom-right'} type="radio" onChange={() => setPosition('bottom-right')} />
           </label>
         </div>
 
@@ -115,10 +120,9 @@ const ComicBubbles = () => {
           <div className={`inner`}>
             <div
               style={{
-                backgroundColor: bgColor,
-                color: textColor,
+                backgroundColor: bgColor, color: textColor,
               }}
-              className={`cbbl ${topPosition} ${bottomPosition}`}>
+              className={`cbbl ${position === 'top-right' ? '-right -up' : position === 'top-left' ? '-up ' : position === 'bottom-right' ? '' : position === 'bottom-left' ? '-right' : ''}`}>
               {text.split('\n').map((line, index) => (
                 <div key={index}>{line}</div>
               ))}

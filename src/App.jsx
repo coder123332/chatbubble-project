@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./App.css";
 import { toPng, toSvg } from 'html-to-image';
+import NavBar from "./components/NavBar";
 
 const ComicBubbles = () => {
 
@@ -71,8 +72,8 @@ const ComicBubbles = () => {
 
   return (
     <div>
+      <NavBar />
       <div className="main--container">
-        <img style={{ height: 'auto', width: '70%' }} src="https://static-cdn.jtvnw.net/jtv_user_pictures/3e5142df-9d1c-41cb-a2b0-5742b7256be6-profile_image-300x300.png" />
         <h4 className="text--white">Write some text and click Create to make your own pixel speech bubble.</h4>
         <textarea
           onKeyDown={handleKeyDown}

@@ -1,7 +1,15 @@
 /* General Styling */
 body {
     font-family: Verdana, sans-serif;
-    background-color: #ff8fb2;
+    background: linear-gradient(-45deg, #ff8fb2, #ffd1dc, #a0cfff, #c26ecf);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .main--container {
@@ -236,4 +244,32 @@ input[type="checkbox"]:before {
 
 input[type="checkbox"]:checked:before {
     transform: translateX(20px);
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+}
+
+.navbar-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar-logo {
+    font-weight: bold;
 }

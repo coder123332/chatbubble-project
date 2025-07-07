@@ -31,6 +31,10 @@ button {
     cursor: pointer;
 }
 
+.shop-button {
+    margin-top: 20px;
+}
+
 /* Link Styling */
 a {
     text-decoration: underline;

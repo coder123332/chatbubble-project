@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import "./App.css";
 import { toPng, toSvg } from 'html-to-image';
+import BoxLogoGenerator from "../Box Logo generator/BoxLogoGenerator";
+import NavBar from "./components/NavBar";
 
 const ComicBubbles = () => {
 
@@ -143,4 +145,12 @@ const ComicBubbles = () => {
   );
 };
 
-export default ComicBubbles;
+const App = () => (
+  <div>
+    <NavBar />
+    <ComicBubbles />
+    <BoxLogoGenerator />
+  </div>
+);
+
+export default App;

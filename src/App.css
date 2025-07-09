@@ -1,6 +1,14 @@
+/* Font Definitions */
+@font-face {
+    font-family: 'Minecraft';
+    src: url('./assets/Minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* General Styling */
 body {
-    font-family: Verdana, sans-serif;
+    font-family: 'Minecraft', Verdana, sans-serif;
     background: linear-gradient(-45deg, #ff9a9e, #ff6ec4, #ffd1dc, #ff9a9e);
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
@@ -71,7 +79,7 @@ a {
 /* Chat Bubble Styling */
 .cbbl {
     font-size: 20px;
-    font-family: "Iceland", cursive;
+    font-family: inherit;
     position: relative;
     display: inline-block;
     margin: 10px 9px 29px 6px;

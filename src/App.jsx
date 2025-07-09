@@ -9,6 +9,7 @@ const ComicBubbles = () => {
   const [position, setPosition] = useState('bottom');
   const [bgColor, setBgColor] = useState('white');
   const [textColor, setTextColor] = useState('black');
+  const [fontFamily, setFontFamily] = useState('Minecraft');
 
   const innerRef = useRef(null);
 
@@ -116,13 +117,23 @@ const ComicBubbles = () => {
             <p className="text--black">Text color</p>
             <input type="color" onChange={(e) => setTextColor(e.target.value)} />
           </div>
+          <div className="m-4">
+            <p className="text--black">Font</p>
+            <select value={fontFamily} onChange={(e) => setFontFamily(e.target.value)}>
+              <option value="Minecraft">Minecraft</option>
+              <option value="Press Start 2P">Press Start 2P</option>
+              <option value="Courier New">Courier New</option>
+            </select>
+          </div>
         </div>
 
         <div ref={innerRef}>
           <div className={`inner`}>
             <div
               style={{
-                backgroundColor: bgColor, color: textColor,
+                backgroundColor: bgColor,
+                color: textColor,
+                fontFamily: fontFamily,
               }}
               className={`cbbl ${position === 'top-right' ? '-right -up' : position === 'top-left' ? '-up ' : position === 'bottom-right' ? '' : position === 'bottom-left' ? '-right' : ''}`}>
               {text.split('\n').map((line, index) => (

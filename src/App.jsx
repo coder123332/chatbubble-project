@@ -71,6 +71,9 @@ const ComicBubbles = () => {
 
   return (
     <div>
+      <nav className="navbar">
+        <a href="https://shop.yungfika.com" target="_blank" rel="noopener noreferrer">Shop</a>
+      </nav>
       <div className="main--container">
         <h4 className="text--white">Write some text and click Create to make your own pixel speech bubble.</h4>
         <textarea

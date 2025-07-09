@@ -1,7 +1,7 @@
 /* General Styling */
 body {
     font-family: Verdana, sans-serif;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+    background: linear-gradient(-45deg, #ff9a9e, #ff6ec4, #ffd1dc, #ff9a9e);
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
     min-height: 100vh;

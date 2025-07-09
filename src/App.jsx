@@ -70,8 +70,11 @@ const ComicBubbles = () => {
     document.head.appendChild(style);
   };
 
+  const quotedFont = fontFamily.includes(' ') ? `'${fontFamily}'` : fontFamily;
+
   return (
     <div>
+      <p className="beta-note">This software is still in beta.</p>
       <nav className="navbar">
         <a href="https://shop.yungfika.com" target="_blank" rel="noopener noreferrer">Shop</a>
       </nav>
@@ -133,7 +136,7 @@ const ComicBubbles = () => {
               style={{
                 backgroundColor: bgColor,
                 color: textColor,
-                fontFamily: fontFamily,
+                fontFamily: quotedFont,
               }}
               className={`cbbl ${position === 'top-right' ? '-right -up' : position === 'top-left' ? '-up ' : position === 'bottom-right' ? '' : position === 'bottom-left' ? '-right' : ''}`}>
               {text.split('\n').map((line, index) => (

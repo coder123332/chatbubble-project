@@ -33,6 +33,13 @@ body {
     font-weight: bold;
 }
 
+.beta-note {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+}
+
 .main--container {
     display: flex;
     flex-direction: column;

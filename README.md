@@ -1,6 +1,6 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules. The app now includes a simple navigation bar that links to the Yungfika shop.
 
 Currently, two official plugins are available:
 

@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
+import Navbar from './components/Navbar';
 import "./App.css";
 import { toPng, toSvg } from 'html-to-image';
 
 const ComicBubbles = () => {
 
   const [text, setText] = useState('Type anything here......');
-  const [vertical, setVerticel] = useState('top');
   const [position, setPosition] = useState('bottom');
   const [bgColor, setBgColor] = useState('white');
   const [textColor, setTextColor] = useState('black');
@@ -104,9 +104,7 @@ const ComicBubbles = () => {
   return (
     <div>
       <p className="beta-note">This software is still in beta.</p>
-      <nav className="navbar">
-        <a href="https://shop.yungfika.com" target="_blank" rel="noopener noreferrer">Shop</a>
-      </nav>
+      <Navbar />
       <div className="main--container">
         <h4 className="text--white">Write some text and click Create to make your own pixel speech bubble.</h4>
         <textarea

@@ -10,6 +10,7 @@ const ComicBubbles = () => {
   const [bgColor, setBgColor] = useState('white');
   const [textColor, setTextColor] = useState('black');
   const [fontFamily, setFontFamily] = useState('Minecraft');
+  const [capsLock, setCapsLock] = useState(false);
 
   const innerRef = useRef(null);
 
@@ -17,14 +18,28 @@ const ComicBubbles = () => {
     if (innerRef.current === null) {
       return;
     }
-    toPng(innerRef.current)
+    const clone = innerRef.current.cloneNode(true);
+    const bubble = clone.querySelector('.cbbl');
+    if (bubble) {
+      const prefixed = `Yungfika.com ${text}`;
+      bubble.innerHTML = prefixed
+        .split('\n')
+        .map((l) => `<div>${capsLock ? l.toUpperCase() : l}</div>`) 
+        .join('');
+    }
+    clone.style.position = 'absolute';
+    clone.style.left = '-9999px';
+    document.body.appendChild(clone);
+    toPng(clone)
       .then((dataUrl) => {
         const link = document.createElement('a');
         link.href = dataUrl;
         link.download = 'comic-bubble.png';
         link.click();
+        document.body.removeChild(clone);
       })
       .catch((err) => {
+        document.body.removeChild(clone);
         console.error('Could not generate PNG', err);
       });
   };
@@ -33,14 +48,28 @@ const ComicBubbles = () => {
     if (innerRef.current === null) {
       return;
     }
-    toSvg(innerRef.current)
+    const clone = innerRef.current.cloneNode(true);
+    const bubble = clone.querySelector('.cbbl');
+    if (bubble) {
+      const prefixed = `Yungfika.com ${text}`;
+      bubble.innerHTML = prefixed
+        .split('\n')
+        .map((l) => `<div>${capsLock ? l.toUpperCase() : l}</div>`) 
+        .join('');
+    }
+    clone.style.position = 'absolute';
+    clone.style.left = '-9999px';
+    document.body.appendChild(clone);
+    toSvg(clone)
       .then((dataUrl) => {
         const link = document.createElement('a');
         link.href = dataUrl;
         link.download = 'comic-bubble.svg';
         link.click();
+        document.body.removeChild(clone);
       })
       .catch((err) => {
+        document.body.removeChild(clone);
         console.error('Could not generate SVG', err);
       });
   };
@@ -128,6 +157,10 @@ const ComicBubbles = () => {
               <option value="Courier New">Courier New</option>
             </select>
           </div>
+          <div className="m-4">
+            <p className="text--black">Caps Lock</p>
+            <input type="checkbox" checked={capsLock} onChange={(e) => setCapsLock(e.target.checked)} />
+          </div>
         </div>
 
         <div ref={innerRef}>
@@ -140,7 +173,7 @@ const ComicBubbles = () => {
               }}
               className={`cbbl ${position === 'top-right' ? '-right -up' : position === 'top-left' ? '-up ' : position === 'bottom-right' ? '' : position === 'bottom-left' ? '-right' : ''}`}>
               {text.split('\n').map((line, index) => (
-                <div key={index}>{line}</div>
+                <div key={index}>{capsLock ? line.toUpperCase() : line}</div>
               ))}
             </div>
           </div>

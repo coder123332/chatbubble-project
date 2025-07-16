@@ -23,14 +23,17 @@ body {
 
 .navbar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     padding: 20px;
 }
 
 .navbar a {
-    color: #000;
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
+    background-color: #ff6ec4;
+    padding: 10px 20px;
+    border-radius: 6px;
 }
 
 .beta-note {

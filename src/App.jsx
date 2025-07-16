@@ -103,8 +103,8 @@ const ComicBubbles = () => {
 
   return (
     <div>
-      <p className="beta-note">This software is still in beta.</p>
       <Navbar />
+      <p className="beta-note">This software is still in beta.</p>
       <div className="main--container">
         <h4 className="text--white">Write some text and click Create to make your own pixel speech bubble.</h4>
         <textarea

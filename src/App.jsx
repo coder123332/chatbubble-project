@@ -105,6 +105,11 @@ const ComicBubbles = () => {
     <div>
       <Navbar />
       <p className="beta-note">This software is still in beta.</p>
+      <div className="generator-buttons">
+        <button onClick={() => (window.location.href = '/')}>Pixel Chat Bubble</button>
+        <button disabled>Coming Soon</button>
+        <button disabled>Coming Soon</button>
+      </div>
       <div className="main--container">
         <h4 className="text--white">Write some text and click Create to make your own pixel speech bubble.</h4>
         <textarea

@@ -1,6 +1,6 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules. The app now includes a large centered button labeled "Get Your FatLove Stickers Here" that links to the Yungfika shop.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules. The app now includes a large centered button labeled "Get Your FatLove Stickers Here" that links to the Yungfika shop. Beneath it there are three buttons for different chat bubble generators &ndash; only the Pixel Chat Bubble is available right now while the other two say "Coming Soon".
 
 Currently, two official plugins are available:
 

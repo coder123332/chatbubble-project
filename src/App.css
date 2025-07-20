@@ -1,7 +1,62 @@
+/* Font Definitions */
+@font-face {
+    font-family: 'Minecraft';
+    src: url('./assets/Minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* General Styling */
 body {
-    font-family: Verdana, sans-serif;
-    background-color: #ff8fb2;
+    font-family: 'Minecraft', Verdana, sans-serif;
+    background: linear-gradient(-45deg, #ff9a9e, #ff6ec4, #ffd1dc, #fcb7ff, #ffcfd2, #ff9a9e);
+    background-size: 800% 800%;
+    animation: gradientAnimation 10s ease infinite;
+    min-height: 100vh;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 50% 0%; }
+    50% { background-position: 100% 50%; }
+    75% { background-position: 50% 100%; }
+    100% { background-position: 0% 50%; }
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.navbar a {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #ff6ec4;
+    padding: 20px 40px;
+    font-size: 32px;
+    border-radius: 8px;
+}
+
+.beta-note {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.generator-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.generator-buttons button[disabled] {
+    background-color: #888;
+    cursor: default;
 }
 
 .main--container {
@@ -50,7 +105,7 @@ a {
 /* Chat Bubble Styling */
 .cbbl {
     font-size: 20px;
-    font-family: "Iceland", cursive;
+    font-family: inherit;
     position: relative;
     display: inline-block;
     margin: 10px 9px 29px 6px;

@@ -1,14 +1,16 @@
 import React, { useRef, useState } from "react";
+import Navbar from './components/Navbar';
 import "./App.css";
 import { toPng, toSvg } from 'html-to-image';
 
 const ComicBubbles = () => {
 
   const [text, setText] = useState('Type anything here......');
-  const [vertical, setVerticel] = useState('top');
   const [position, setPosition] = useState('bottom');
   const [bgColor, setBgColor] = useState('white');
   const [textColor, setTextColor] = useState('black');
+  const [fontFamily, setFontFamily] = useState('Minecraft');
+  const [capsLock, setCapsLock] = useState(false);
 
   const innerRef = useRef(null);
 
@@ -16,14 +18,28 @@ const ComicBubbles = () => {
     if (innerRef.current === null) {
       return;
     }
-    toPng(innerRef.current)
+    const clone = innerRef.current.cloneNode(true);
+    const bubble = clone.querySelector('.cbbl');
+    if (bubble) {
+      const prefixed = `Yungfika.com ${text}`;
+      bubble.innerHTML = prefixed
+        .split('\n')
+        .map((l) => `<div>${capsLock ? l.toUpperCase() : l}</div>`) 
+        .join('');
+    }
+    clone.style.position = 'absolute';
+    clone.style.left = '-9999px';
+    document.body.appendChild(clone);
+    toPng(clone)
       .then((dataUrl) => {
         const link = document.createElement('a');
         link.href = dataUrl;
         link.download = 'comic-bubble.png';
         link.click();
+        document.body.removeChild(clone);
       })
       .catch((err) => {
+        document.body.removeChild(clone);
         console.error('Could not generate PNG', err);
       });
   };
@@ -32,14 +48,28 @@ const ComicBubbles = () => {
     if (innerRef.current === null) {
       return;
     }
-    toSvg(innerRef.current)
+    const clone = innerRef.current.cloneNode(true);
+    const bubble = clone.querySelector('.cbbl');
+    if (bubble) {
+      const prefixed = `Yungfika.com ${text}`;
+      bubble.innerHTML = prefixed
+        .split('\n')
+        .map((l) => `<div>${capsLock ? l.toUpperCase() : l}</div>`) 
+        .join('');
+    }
+    clone.style.position = 'absolute';
+    clone.style.left = '-9999px';
+    document.body.appendChild(clone);
+    toSvg(clone)
       .then((dataUrl) => {
         const link = document.createElement('a');
         link.href = dataUrl;
         link.download = 'comic-bubble.svg';
         link.click();
+        document.body.removeChild(clone);
       })
       .catch((err) => {
+        document.body.removeChild(clone);
         console.error('Could not generate SVG', err);
       });
   };
@@ -69,10 +99,18 @@ const ComicBubbles = () => {
     document.head.appendChild(style);
   };
 
+  const quotedFont = fontFamily.includes(' ') ? `'${fontFamily}'` : fontFamily;
+
   return (
     <div>
+      <Navbar />
+      <p className="beta-note">This software is still in beta.</p>
+      <div className="generator-buttons">
+        <button onClick={() => (window.location.href = '/')}>Pixel Chat Bubble</button>
+        <button disabled>Coming Soon</button>
+        <button disabled>Coming Soon</button>
+      </div>
       <div className="main--container">
-        <img style={{ height: 'auto', width: '70%' }} src="https://static-cdn.jtvnw.net/jtv_user_pictures/3e5142df-9d1c-41cb-a2b0-5742b7256be6-profile_image-300x300.png" />
         <h4 className="text--white">Write some text and click Create to make your own pixel speech bubble.</h4>
         <textarea
           onKeyDown={handleKeyDown}
@@ -114,17 +152,31 @@ const ComicBubbles = () => {
             <p className="text--black">Text color</p>
             <input type="color" onChange={(e) => setTextColor(e.target.value)} />
           </div>
+          <div className="m-4">
+            <p className="text--black">Font</p>
+            <select value={fontFamily} onChange={(e) => setFontFamily(e.target.value)}>
+              <option value="Minecraft">Minecraft</option>
+              <option value="Press Start 2P">Press Start 2P</option>
+              <option value="Courier New">Courier New</option>
+            </select>
+          </div>
+          <div className="m-4">
+            <p className="text--black">Caps Lock</p>
+            <input type="checkbox" checked={capsLock} onChange={(e) => setCapsLock(e.target.checked)} />
+          </div>
         </div>
 
         <div ref={innerRef}>
           <div className={`inner`}>
             <div
               style={{
-                backgroundColor: bgColor, color: textColor,
+                backgroundColor: bgColor,
+                color: textColor,
+                fontFamily: quotedFont,
               }}
               className={`cbbl ${position === 'top-right' ? '-right -up' : position === 'top-left' ? '-up ' : position === 'bottom-right' ? '' : position === 'bottom-left' ? '-right' : ''}`}>
               {text.split('\n').map((line, index) => (
-                <div key={index}>{line}</div>
+                <div key={index}>{capsLock ? line.toUpperCase() : line}</div>
               ))}
             </div>
           </div>
